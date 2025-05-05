@@ -1,13 +1,14 @@
 # Stage 1: Build
-FROM node:18-alpine AS builder
+FROM node:lts AS builder
 WORKDIR /app
-COPY package*.json ./
+COPY package.json package-lock.json ./
+RUN npm install next-auth @/components/ui/input @/components/ui/button
 RUN npm ci --only=production
 COPY . .
 RUN npm run build
 
 # Stage 2: Run
-FROM node:18-alpine
+FROM node:lts
 WORKDIR /app
 COPY --from=builder /app/package*.json ./
 COPY --from=builder /app/.next ./.next
