@@ -2,7 +2,7 @@
 FROM node:lts AS builder
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN npm install next-auth @/components/ui/input @/components/ui/button
+RUN npm install next-auth
 RUN npm ci --only=production
 COPY . .
 RUN npm run build
