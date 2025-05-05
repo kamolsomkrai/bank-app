@@ -72,8 +72,8 @@ export default function TransactionPage() {
 
         const data: Transaction[] = await response.json()
         setStatement(data)
-      } catch (error: any) {
-        toast.error(error.message || 'โหลดข้อมูลล้มเหลว')
+      } catch (error: unknown) {
+        toast.error(error instanceof Error ? error.message : 'โหลดข้อมูลล้มเหลว')
         setStatement([])
       } finally {
         setIsLoadingStmt(false)
@@ -106,9 +106,9 @@ export default function TransactionPage() {
 
       const data: Account = await response.json()
       setAccount(data)
-    } catch (error: any) {
+    } catch (error: unknown) {
       setAccount(null)
-      toast.error(error.message)
+      toast.error(error instanceof Error ? error.message : 'An unknown error occurred')
     } finally {
       setIsSearching(false)
     }
@@ -160,8 +160,8 @@ export default function TransactionPage() {
         const stmtData = await stmtResponse.json()
         setStatement(stmtData)
       }
-    } catch (error: any) {
-      toast.error(error.message)
+    } catch (error: unknown) {
+      toast.error(error instanceof Error ? error.message : 'An unknown error occurred')
     } finally {
       setIsProcessing(false)
     }
