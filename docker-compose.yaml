@@ -4,6 +4,10 @@ services:
     container_name: bankvilage-app
     ports:
       - "3050:3000"
-    environment:
-      - NODE_ENV=production
+    env_file:
+      - .env # อ้างอิงไปยังไฟล์ .env
     restart: unless-stopped
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
