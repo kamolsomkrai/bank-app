@@ -60,7 +60,7 @@ export default function TransactionPage() {
       try {
         const token = localStorage.getItem('token')
         const response = await fetch(
-          `http://202.148.187.2:8000/accounts/${displayAccount}/statement?month=${month}`,
+          `http://172.18.1.41:8000/accounts/${displayAccount}/statement?month=${month}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -93,7 +93,7 @@ export default function TransactionPage() {
     setIsSearching(true)
     try {
       const token = localStorage.getItem('token')
-      const response = await fetch(`http://202.148.187.2:8000/accounts/${displayAccount}`, {
+      const response = await fetch(`http://172.18.1.41:8000/accounts/${displayAccount}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -124,7 +124,7 @@ export default function TransactionPage() {
     setIsProcessing(true)
     try {
       const token = localStorage.getItem('token')
-      const response = await fetch('http://202.148.187.2:8000/accounts/transaction', {
+      const response = await fetch('http://172.18.1.41:8000/accounts/transaction', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -149,7 +149,7 @@ export default function TransactionPage() {
 
       // โหลด statement ใหม่
       const stmtResponse = await fetch(
-        `http://202.148.187.2:8000/accounts/${displayAccount}/statement?month=${month}`,
+        `http://172.18.1.41:8000/accounts/${displayAccount}/statement?month=${month}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

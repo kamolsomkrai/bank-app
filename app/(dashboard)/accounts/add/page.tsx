@@ -38,7 +38,7 @@ export default function AddAccountPage() {
 
     try {
       // Search customer
-      const customerRes = await fetch("http://202.148.187.2:8000/customers/search", {
+      const customerRes = await fetch("http://172.18.1.41:8000/customers/search", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -52,7 +52,7 @@ export default function AddAccountPage() {
       setCustomer(customerData);
 
       // Get accounts
-      const accountsRes = await fetch(`http://202.148.187.2:8000/customers/${customerData.id}/accounts`);
+      const accountsRes = await fetch(`http://172.18.1.41:8000/customers/${customerData.id}/accounts`);
       if (!accountsRes.ok) throw new Error("Failed to load accounts");
 
       const accountsData = await accountsRes.json();
@@ -74,7 +74,7 @@ export default function AddAccountPage() {
     setError("");
 
     try {
-      const res = await fetch("http://202.148.187.2:8000/accounts/open", {
+      const res = await fetch("http://172.18.1.41:8000/accounts/open", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -91,7 +91,7 @@ export default function AddAccountPage() {
       const newAccount = await res.json();
 
       // Refresh accounts list
-      const accountsRes = await fetch(`http://202.148.187.2:8000/customers/${customer.id}/accounts`);
+      const accountsRes = await fetch(`http://172.18.1.41:8000/customers/${customer.id}/accounts`);
       const accountsData = await accountsRes.json();
       setAccounts(accountsData);
 
