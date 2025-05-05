@@ -3,7 +3,7 @@ FROM node:lts AS builder
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm install next-auth
-RUN npm ci --only=production
+RUN npm ci --omit=dev
 COPY . .
 RUN npm run build
 
