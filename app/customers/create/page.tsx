@@ -85,11 +85,24 @@ export default function CreateCustomerPage() {
         occupation: form.occupation || null,
         initialDeposit: parseFloat(form.initialDeposit),
       }
-      const res = await api.post('/customers', payload)
+      const response = await fetch('http://202.148.187.2:8000/api/customers', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.detail || 'สร้างลูกค้าไม่สำเร็จ');
+      }
+
+      const res = await response.json();
       toast.success('สร้างลูกค้าเรียบร้อย')
-      router.push(`/accounts/add?customerId=${res.data.id}`)
+      router.push(`/accounts/add?customerId=${res.id}`)
     } catch (err: any) {
-      toast.error(err.response?.data?.detail || 'สร้างลูกค้าไม่สำเร็จ')
+      toast.error(err.message || 'สร้างลูกค้าไม่สำเร็จ')
     } finally {
       setLoading(false)
     }
