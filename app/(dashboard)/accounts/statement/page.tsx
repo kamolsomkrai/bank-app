@@ -3,8 +3,8 @@
 import { useState } from "react";
 import AuthGuard from "@/middlewares/authGuard";
 import { useMonthlyStatement } from "@/hooks/useMonthlyStatement";
-import Input from "@/components/ui/input";
-import Button from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 export default function StatementPage() {
   const [accountId, setAccountId] = useState("");
