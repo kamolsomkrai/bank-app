@@ -85,7 +85,7 @@ export default function CreateCustomerPage() {
         occupation: form.occupation || null,
         initialDeposit: parseFloat(form.initialDeposit),
       }
-      const response = await fetch('http://202.148.187.2:8000/api/customers', {
+      const response = await fetch('http://202.148.187.2:8000/customers', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
