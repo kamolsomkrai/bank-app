@@ -26,7 +26,7 @@ export default function CreateCustomerPage() {
     phone: '',
     email: '',
     occupation: '',
-    initialDeposit: '',
+    initialDeposit: '0.00',
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [loading, setLoading] = useState(false)
@@ -44,7 +44,7 @@ export default function CreateCustomerPage() {
     const requiredFields = [
       'prefix', 'firstName', 'lastName', 'cid', 'birthDate',
       'gender', 'address', 'province', 'district', 'subDistrict',
-      'moo', 'phone', 'initialDeposit'
+      'moo', 'phone'
     ]
 
     requiredFields.forEach(field => {
