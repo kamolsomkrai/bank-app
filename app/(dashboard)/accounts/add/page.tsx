@@ -82,7 +82,7 @@ export default function AddAccountPage() {
         body: JSON.stringify({
           customer_id: customer.id,
           account_type: accountType,
-          initial_deposit: 500 // Assuming no initial deposit for simplicity
+          initial_deposit: 0 // Assuming no initial deposit for simplicity
         })
       });
 

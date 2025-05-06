@@ -83,7 +83,7 @@ export default function CreateCustomerPage() {
         phone: form.phone,
         email: form.email || null,
         occupation: form.occupation || null,
-        initialDeposit: parseFloat(form.initialDeposit),
+        initialDeposit: 0.00,
       }
       const response = await fetch('http://202.148.187.2:8000/customers', {
         method: 'POST',
@@ -277,7 +277,7 @@ export default function CreateCustomerPage() {
           </div>
 
           {/* เงินฝากเริ่มต้น */}
-          <div>
+          {/* <div>
             <label className="block mb-1">เงินฝากเริ่มต้น <span className="text-red-500">*</span></label>
             <Input
               type="number"
@@ -286,7 +286,7 @@ export default function CreateCustomerPage() {
               placeholder="จำนวนเงิน"
             />
             {errors.initialDeposit && <p className="text-red-500 text-xs">{errors.initialDeposit}</p>}
-          </div>
+          </div> */}
 
           <Button type="submit" disabled={loading} className="w-full">
             {loading ? 'กำลังบันทึก...' : 'สร้างลูกค้า'}
